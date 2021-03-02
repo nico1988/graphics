@@ -20,11 +20,18 @@
   <div class="block"></div>
   <script>
   const block = document.querySelector('.block');
-  let rotation = 0;
-  requestAnimationFrame(function update() {
-    block.style.transform = `rotate(${rotation++}deg)`;
+  const rotation = 0;
+
+  function render(ele, rotation) {
+    function update() {
+      ele.style.transform = `rotate(${rotation++}deg)`;
+      requestAnimationFrame(update);
+    };
     requestAnimationFrame(update);
-  });
+  }
+  render(block, rotation);
+
+
   </script>
 </body>
 </html>

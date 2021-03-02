@@ -18,19 +18,31 @@
 </head>
 <body>
   <div class="block"></div>
+  <div>
+    <button onclick="cancelAnimation(rId)">停止动画</button>
+    <button onclick="runAnimation(rId)">开始动画</button>
+  </div>
   <script>
+  let requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+          window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  let rId;
   const block = document.querySelector('.block');
   const startAngle = 0;
-  const T = 2000;
+  const T = 360; // 转动加速度 越大转的越慢
   let startTime = null;
-  function update() {
+  function runAnimation() {
     startTime = startTime == null ? Date.now() : startTime;
     const p = (Date.now() - startTime) / T;
-    const angle = startAngle + p * 360;
+    const angle = startAngle + p * 360; // 转动的角度
     block.style.transform = `rotate(${angle}deg)`;
-    requestAnimationFrame(update);
+    rId = requestAnimationFrame(runAnimation);
   }
-  update();
+  runAnimation();
+  function cancelAnimation(id) {
+    console.log(id);
+    window.cancelAnimationFrame(id);
+    console.log(id);
+  }
   </script>
 </body>
 </html>
