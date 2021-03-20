@@ -16,6 +16,7 @@ function regularShape(edges = 3, x, y, step) {
     p = p.copy().add(dir.rotate(delta));
     ret.push(p);
   }
+  console.log('ret:::', ret);
   return ret;
 }
 
