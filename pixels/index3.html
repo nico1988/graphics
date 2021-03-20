@@ -28,8 +28,14 @@
           return transformColor([r, g, b, a], grayscale(percent));
         });
         context.putImageData(imageData, 0, 0);
-        percent += 0.1;
-        if(percent <= 1) requestAnimationFrame(update);
+        let t = 0.1;
+        if(percent >= 1){
+          t = -0.1;
+        } else if(percent <= 0) {
+          t = 0.1;
+        }
+        percent += t;
+        requestAnimationFrame(update);
       }
       update();
     }());

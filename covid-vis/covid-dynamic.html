@@ -126,7 +126,8 @@
           worldData,
           worldData.objects.countries
         );
-
+        let aaa = await fetch("./assets/data/covid-data.json");
+        console.log('aaa:::', aaa);
         const covidData = await (
           await fetch("./assets/data/covid-data.json")
         ).json();

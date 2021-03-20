@@ -23,10 +23,11 @@
       uniform mat4 projectionMatrix;
       uniform mat4 modelMatrix;
       uniform mat3 normalMatrix;
-      
+
       const vec3 lightPosition = vec3(1, 0, 0);
 
       void main() {
+        int a = 4;
         gl_PointSize = 1.0;
         vColor = color;
         vec4 pos =  modelMatrix * vec4(a_vertexPosition, 1.0);
